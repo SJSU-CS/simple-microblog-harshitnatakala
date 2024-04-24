@@ -88,7 +88,7 @@ public class MicroblogCLI {
 
                 HttpEntity<String> requestEntity = new HttpEntity<>(jsonPayload, headers);
 
-                ResponseEntity<String> response = restClient.postForEntity("http://localhost:8080/messages/create", requestEntity, String.class);
+                ResponseEntity<String> response = restClient.postForEntity("http://harshitspring.chickenkiller.com/messages/create", requestEntity, String.class);
                 System.out.println("Server response: " + response.getBody());
             } catch (Exception e) {
                 System.err.println("An error occurred: " + e.getMessage());
@@ -153,7 +153,7 @@ public class MicroblogCLI {
             int messagesFetched = 0;
             int messagesToFetch = count;
             while (messagesFetched < count) {
-                String url = String.format("http://localhost:8080/messages/list?limit=%d&next=%s",
+                String url = String.format("http://harshitspring.chickenkiller.com/messages/list?limit=%d&next=%s",
                         Math.min(messagesToFetch, 20), startingId);
                 try {
                     ResponseEntity<String> response = restClient.getForEntity(url, String.class);
